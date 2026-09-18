@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Cyklistické oblečenie podľa aktuálnej alebo zadanej teploty.">
+  <meta name="theme-color" content="#071c22">
+  <title>Cyklo vrstvy</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071c22'/%3E%3Cpath d='M20 43a11 11 0 1 0 0-22 11 11 0 0 0 0 22Zm24 0a11 11 0 1 0 0-22 11 11 0 0 0 0 22ZM20 32h12l7-13m-7 13 8 0-6-13h-7' fill='none' stroke='%235ee6c4' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Cyklo vrstvy – domov"><span class="mark">C°</span><span>Cyklo vrstvy</span></a>
+      <div class="header-actions"><span class="status"><i></i> <span id="readyLabel">pripravené na jazdu</span></span><div class="lang" aria-label="Language"><button type="button" data-lang="sk" class="active">SK</button><button type="button" data-lang="en">EN</button></div></div>
+    </header>
+    <section class="dashboard">
+      <aside class="control-card">
+        <form id="placeForm" class="place-form">
+          <label for="place" id="locationLabel">Tvoja poloha</label>
+          <div class="search-row"><input id="place" name="place" placeholder="Napr. Bratislava" autocomplete="address-level2" required><button type="submit" id="searchBtn" aria-label="Zistiť počasie">→</button></div>
+          <button class="locate" type="button" id="locateBtn">Použiť moju polohu</button>
+          <p id="weatherNote" class="weather-note" aria-live="polite">Zadaj mesto alebo použi polohu zariadenia.</p>
+        </form>
+        <div class="unit-switch" role="group" aria-label="Jednotka teploty"><button type="button" data-unit="c" class="active">°C</button><button type="button" data-unit="f">°F</button></div>
+        <div class="dial" id="dial">
+          <div class="dial-core"><span id="tempLabel">Teplota pre jazdu</span><output id="tempOut" for="temp">12 °C</output><strong id="tempSecondary">53.6 °F</strong><small id="band">Chladno</small></div>
+        </div>
+        <div class="temperature"><input id="temp" type="range" min="-15" max="35" step="0.5" value="12"><div class="scale"><span id="scaleMin">−15 °C</span><span id="scaleMid">10 °C</span><span id="scaleMax">35 °C</span></div></div>
+        <span id="feels" class="feels">pre 12 °C</span>
+        <div class="conditions" aria-label="Podmienky jazdy"><label><input type="checkbox" id="wind"><span id="windLabel">Veterno</span></label><label><input type="checkbox" id="rain"><span id="rainLabel">Dážď</span></label><label><input type="checkbox" id="easy"><span id="easyLabel">Pokojné tempo</span></label></div>
+      </aside>
+      <article class="result" aria-live="polite">
+        <div class="result-head"><div><p class="eyebrow" id="recommendedLabel">Odporúčaná zostava</p><h1 id="title">Dres + ľahké tielko</h1></div><p id="tip" class="tip"></p></div>
+        <div class="photo-wrap"><img id="outfitImage" src="assets/kit-comfortable.webp" alt="Odporúčaná cyklistická zostava" width="1200" height="751"></div>
+        <div id="itemCards" class="item-cards"></div>
+        <div id="items" class="items" hidden></div>
+      </article>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
